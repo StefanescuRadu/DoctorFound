@@ -1,24 +1,40 @@
-let map;
-let position ;
+
+let directionsService = new google.maps.DirectionsService()
+let directionsRenderer = new google.maps.DirectionsRenderer();
+let autocomplete = new google.maps.places.Autocomplete(
+    document.getElementById("autocomplete"),
+    {
+        types: ['establishment'],
+        componentRestrictions: {'country':['AU']},
+        fields: ['place_id','geometry','name']
+    });
+
 function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 15,
+
+
+    var mapOptions = {
+        zoom:7,
+        center: {lat:44.439211,lng:26.112343}
+    }
+    var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+    directionsRenderer.setMap(map);
+    directionsRenderer.setPanel(document.getElementById('directionsPanel'));
+}
+
+function calcRoute() {
+
+    var start = document.getElementById('start').value;
+    var end = document.getElementById('end').value;
+    var request = {
+        origin:start,
+        destination:end,
+        travelMode: 'DRIVING'
+    };
+    directionsService.route(request, function(response, status) {
+        if (status == 'OK') {
+            directionsRenderer.setDirections(response);
+        }
     });
 }
-function getLocation() {
-    if (navigator.geolocation) {
-       position = navigator.geolocation.getCurrentPosition(showPosition);
-       console.log(position);
-    } else {
-        console.log("Geolocation is not supported by this browser.") ;
-    }
-}
-
-function showPosition(position) {
-    console.log("Latitude: " + position.coords.latitude +
-        "Longitude: " + position.coords.longitude)
-}
-initMap();
-
+initMap()
 // https://developers.google.com/maps/documentation/javascript/overview#maps_map_simple-css
