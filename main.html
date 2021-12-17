@@ -4,15 +4,45 @@
     <title>Simple Map</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script src="./main.js"></script>
+
 </head>
 <body>
-<div id="map"></div>
+<div id="floating-panel">
+    <div>
+        <div id="coordinates">
+            <strong>Start: </strong>
+            <input id="start" type="text" name="start">
+            <strong>End: </strong>
+            <input id="end" type="text" name="end">
+        </div>
 
+    </div>
+    <div>
+        <strong>Mode of Travel: </strong>
+        <select id="mode" onchange="displayRoute()">
+            <option value="DRIVING">Driving</option>
+            <option value="WALKING">Walking</option>
+            <option value="BICYCLING">Bicycling</option>
+            <option value="TRANSIT">Transit</option>
+        </select>
+    </div>
+    <p>Total Distance: <span id="total"></span></p>
+    <div>
+        <p id="directionsPanel"></p>
+    </div>
+
+</div>
+
+
+<div id="map"></div>
 <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+
+
 <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFZ_Sw64FNRGBiKixCF8TJGYxN1AXrpQs&callback=initMap&v=weekly"
-        async
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFZ_Sw64FNRGBiKixCF8TJGYxN1AXrpQs&libraries=places"
 ></script>
+<script src="./main.js"></script>
+
+
 </body>
 </html>
