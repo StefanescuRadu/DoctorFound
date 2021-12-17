@@ -31,8 +31,13 @@ google = oauth.register(
 )
 
 
-@app.route('/')
-def hello_world():
+@app.route('/', methods=['GET', 'POST'])
+def main():
+    if request.method == 'POST':
+        searched = request.form.get('search-box') #for dragos
+
+
+
     premium = '1999'
     current_date = util.get_current_datetime()
     print("current_date: 0000000")
