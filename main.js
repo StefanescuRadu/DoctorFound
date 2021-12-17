@@ -1,20 +1,30 @@
 
 let directionsService = new google.maps.DirectionsService()
 let directionsRenderer = new google.maps.DirectionsRenderer();
-let autocomplete = new google.maps.places.Autocomplete(
-    document.getElementById("autocomplete"),
+let autocompleteStart = new google.maps.places.Autocomplete(
+    document.getElementById("start"),
     {
-        types: ['establishment'],
-        componentRestrictions: {'country':['AU']},
-        fields: ['place_id','geometry','name']
+        fields: ["formatted_address", "geometry", "name"],
+        strictBounds: false,
+        types: ["establishment"],
     });
+let autocompleteEnd = new google.maps.places.Autocomplete(
+    document.getElementById("end"),
+    {
+        fields: ["formatted_address", "geometry", "name"],
+        strictBounds: false,
+        types: ["establishment"],
+    });
+
+
 
 function initMap() {
 
 
     var mapOptions = {
-        zoom:7,
-        center: {lat:44.439211,lng:26.112343}
+        zoom:15,
+        center: {lat:44.439211,lng:26.112343},
+        scrollwheel: true
     }
     var map = new google.maps.Map(document.getElementById('map'), mapOptions);
     directionsRenderer.setMap(map);
