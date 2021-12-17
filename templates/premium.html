@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Buy premium{%endblock title %}
+
+{% block content %}
+<form action="{{ url_for('buy_premium', email=session['profile']['email']) }}}" method="post">
+    <label for="voucher">Do you have a voucher?</label>
+    <input id="voucher" name="voucher">
+    <button type="submit">Submit</button>
+</form>
+
+
+
+
+{% endblock content %}
