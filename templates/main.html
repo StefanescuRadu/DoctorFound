@@ -26,7 +26,42 @@
 </form>
 
 
+<div id="floating-panel">
+    <div>
+        <div id="coordinates">
+            <strong>Start: </strong>
+            <input id="start" type="text" name="start">
+            <strong>End: </strong>
+            <input id="end" type="text" name="end">
+        </div>
+
+    </div>
+    <div>
+        <strong>Mode of Travel: </strong>
+        <select id="mode">
+            <option value="DRIVING">Driving</option>
+            <option value="WALKING">Walking</option>
+            <option value="BICYCLING">Bicycling</option>
+            <option value="TRANSIT">Transit</option>
+        </select>
+    </div>
+    <p>Total Distance: <span id="total"></span></p>
+    <div>
+        <p id="directionsPanel"></p>
+    </div>
+
+</div>
+
+
+<div id="map"></div>
+
+
+
 <script src="{{ url_for('static', filename='main.js') }}"></script>
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDFZ_Sw64FNRGBiKixCF8TJGYxN1AXrpQs&libraries=places"
+></script>
+<script src="{{ url_for('static', filename='map.js') }}"></script>
 
 {%endblock content %}
 
