@@ -22,4 +22,24 @@ body {
     line-height: 30px;
     padding: 10px;
 
+    background-color:transparent;
 }
+
+
+
+input{
+    width: 500px;
+}
+#coordinates{
+    display: flex;
+    flex-direction: column;
+}
+
+#directionsPanel{
+    background-color: red;
+    position: absolute;
+    top:20px;
+    right: 10%;
+    width: 400px;
+}
+

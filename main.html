@@ -9,20 +9,28 @@
 <body>
 <div id="floating-panel">
     <div>
-        <strong>Start: </strong>
-        <input id="start" type="text" name="start">
-        <strong>End: </strong>
-        <input id="end" type="text" name="end">
+        <div id="coordinates">
+            <strong>Start: </strong>
+            <input id="start" type="text" name="start">
+            <strong>End: </strong>
+            <input id="end" type="text" name="end">
+        </div>
+
     </div>
     <div>
         <strong>Mode of Travel: </strong>
-        <select id="mode" onchange="calcRoute();">
+        <select id="mode">
             <option value="DRIVING">Driving</option>
             <option value="WALKING">Walking</option>
             <option value="BICYCLING">Bicycling</option>
             <option value="TRANSIT">Transit</option>
         </select>
     </div>
+    <p>Total Distance: <span id="total"></span></p>
+    <div>
+        <p id="directionsPanel"></p>
+    </div>
+
 </div>
 
 
