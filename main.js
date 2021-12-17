@@ -45,6 +45,7 @@ function initMap() {
     // );
 
 
+
 }
 const modeForm = document.getElementById("mode").children;
 for(elem of modeForm){

@@ -19,7 +19,7 @@
     </div>
     <div>
         <strong>Mode of Travel: </strong>
-        <select id="mode" onchange="displayRoute()">
+        <select id="mode" onchange="calcRoute()">
             <option value="DRIVING">Driving</option>
             <option value="WALKING">Walking</option>
             <option value="BICYCLING">Bicycling</option>
@@ -27,13 +27,13 @@
         </select>
     </div>
     <p>Total Distance: <span id="total"></span></p>
-    <div>
-        <p id="directionsPanel"></p>
-    </div>
+
 
 </div>
 
-
+<div>
+    <p id="directionsPanel"></p>
+</div>
 <div id="map"></div>
 <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
 
