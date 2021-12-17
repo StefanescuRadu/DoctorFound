@@ -124,6 +124,7 @@ def enter_room(room_id):
         return redirect(url_for("entry_checkpoint", room_id=room_id))
     if 'profile' in session:
         email = session['profile']['email']
+
         premium = datamanager.check_if_premium(email)[0]['premium_expiration']
     current_date = util.get_current_datetime()
     return render_template("main.html", room_id=room_id, display_name=session[room_id]["name"],

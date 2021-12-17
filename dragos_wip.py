@@ -36,5 +36,5 @@ locations = places(gmaps,query=search_string,location=geocode_home_address['geom
 
 sorted_locations = get_clean_closest_locations(locations,geocode_home_address)
 
-# print(str(sorted_locations))
+print(str(sorted_locations))
 
