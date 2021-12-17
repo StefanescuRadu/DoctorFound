@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome{%endblock title %}
+
+{% block content %}
+
+{% if 'profile' in session %}
+<h1>Welcome {{ session['profile']['given_name'] }}</h1>
+
+<p2><a href="{{ url_for('logout') }}">Logout</a></p2>
+    {% if current_date < premium %}
+        <p3>You are a premium user!</p3>
+    {% else %}
+        <p>You are not a premium user</p>
+        <p></p><a href="{{ url_for('buy_premium') }}">Click here to buy a premium subscription!</a></p>
+    {% endif %}
+{% else %}
+<h1>Welcome</h1>
+<p2><a href="{{ url_for('login') }}">Login</a></p2>
+{% endif %}
+
+
+
+{%endblock content %}
+
+

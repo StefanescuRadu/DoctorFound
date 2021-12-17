@@ -1,8 +1,12 @@
-from flask import Flask, render_template, redirect, url_for, session, flash
+from flask import Flask, render_template, redirect, url_for, session, flash, request
 from authlib.integrations.flask_client import OAuth
 import os
 from datetime import timedelta
 from dotenv import load_dotenv
+from datetime import datetime
+
+import datamanager
+import util
 
 app = Flask(__name__)
 load_dotenv()
@@ -29,11 +33,25 @@ google = oauth.register(
 
 @app.route('/')
 def hello_world():
-    try:
-        email = session.get('profile')['given_name']
-    except:
-        email="none"
-    return f'Hello, you are logged in as {email}!'
+    premium = '1999'
+    current_date = util.get_current_datetime()
+    print("current_date: 0000000")
+    print(current_date)
+    print(type(current_date))
+    print('-----------0-------------')
+    if 'profile' in session:
+        email = session['profile']['email']
+        try:  # index error if email not found in the databse/ not registered
+            datamanager.check_if_user_exists(email)[0]['email']
+        except IndexError:
+            datamanager.add_user(email)
+
+        premium = datamanager.check_if_premium(email)[0]['premium_expiration']
+        print('premium: 00000')
+        print(premium)
+        print(type(current_date))
+        print('-----------0-------------')
+    return render_template('main.html', premium=premium, current_date=current_date)
 
 
 @app.route('/login')
@@ -62,6 +80,13 @@ def logout():
     for key in list(session.keys()):
         session.pop(key)
     return redirect('/')
+
+
+@app.route('/premium', methods=['GET', 'POST'])
+def buy_premium():
+    if request.method == 'POST':
+        pass
+    return 'hi'
 
 if __name__ == '__main__':
     app.run(debug=True)
