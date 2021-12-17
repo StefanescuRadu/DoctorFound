@@ -11,3 +11,35 @@ body {
     margin: 0;
     padding: 0;
 }
+
+#floating-panel{
+    position: absolute;
+    top: 20px;
+    left:25%;
+    z-index: 5;
+    border: 1px solid #999;
+    text-align: center;
+    line-height: 30px;
+    padding: 10px;
+
+    background-color:transparent;
+}
+
+
+
+input{
+    width: 500px;
+}
+#coordinates{
+    display: flex;
+    flex-direction: column;
+}
+
+#directionsPanel{
+    background-color: red;
+    position: absolute;
+    top:20px;
+    right: 10%;
+    width: 400px;
+}
+
