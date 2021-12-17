@@ -82,11 +82,18 @@ def logout():
     return redirect('/')
 
 
-@app.route('/premium', methods=['GET', 'POST'])
-def buy_premium():
+@app.route('/premium/<email>', methods=['GET', 'POST'])
+def buy_premium(email):
+    email = email.replace('}', '')
+    print(email)
     if request.method == 'POST':
-        pass
-    return 'hi'
+        if request.form.get('voucher') == 'reducere':
+            datamanager.give_premium(email)
+    print('----------')
+    print(str(session))
+    print('----------')
+    return render_template('premium.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

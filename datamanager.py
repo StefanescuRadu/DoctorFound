@@ -35,3 +35,15 @@ def check_if_premium(cursor, email):
     email = {'email': email}
     cursor.execute(query, email)
     return cursor.fetchall()
+
+
+@database_common.connection_handler
+def give_premium(cursor, email):
+    query = """
+        UPDATE users
+        SET premium_expiration = %(future_date)s
+        WHERE email = %(email)s;
+        """
+    details = {'email': email,
+               'future_date': util.get_future_datetime()}
+    cursor.execute(query, details)
