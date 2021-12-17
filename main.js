@@ -37,12 +37,12 @@ function initMap() {
             computeTotalDistance(directions);
         }
     });
-    displayRoute(
-        "Perth, WA",
-        "Sydney, NSW",
-        directionsService,
-        directionsRenderer
-    );
+    // displayRoute(
+    //     "Perth, WA",
+    //     "Sydney, NSW",
+    //     directionsService,
+    //     directionsRenderer
+    // );
 
 
 }
