@@ -4,9 +4,12 @@ import datetime
 def get_current_datetime():
     return datetime.date.today()
 
+
 def get_future_datetime():
     td = datetime.timedelta(days=365)
     return datetime.date.today() + td
+
+
 def convert_address(element:dict):
     result={}
     result['formatted_address']=element.get('formatted_address',"") 
