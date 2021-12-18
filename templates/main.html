@@ -16,7 +16,7 @@
 
     <p><a id="logout" href="{{ url_for('logout') }}">Logout</a></p>
         {% if current_date < premium %}
-            <p>You are a premium user!</p>
+            <p>Premium User</p>
         {% else %}
             <p>You are not a premium user</p>
             <p><a href="{{ url_for('buy_premium', email=session['profile']['email']) }}">Click here to buy a premium subscription!</a></p>
