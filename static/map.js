@@ -1,6 +1,11 @@
 // let mode = document.getElementById("mode").value;
 let directionsService = new google.maps.DirectionsService()
 let directionsRenderer = new google.maps.DirectionsRenderer();
+
+// let address = document.getElementById('geometry').getAttribute("data-geometry");
+let address = document.getElementById('address').innerHTML;
+
+console.log(address)
 // var end = document.getElementById('end').value;
 // var start = document.getElementById('start').value;
 // new google.maps.places.Autocomplete(
@@ -37,12 +42,12 @@ function initMap() {
             computeTotalDistance(directions);
         }
     });
-    // displayRoute(
-    //     "Perth, WA",
-    //     "Sydney, NSW",
-    //     directionsService,
-    //     directionsRenderer
-    // );
+    displayRoute(
+        "Strada Semilunei 4-6, București 020797",
+        address,
+        directionsService,
+        directionsRenderer
+    );
 
 
 
@@ -58,7 +63,7 @@ function displayRoute(origin, destination, service, display) {
             .route({
                 origin: origin,
                 destination: destination,
-                travelMode: google.maps.TravelMode[mode],
+                travelMode: google.maps.TravelMode.DRIVING,
                 avoidTolls: true,
             })
             .then((result) => {
@@ -105,6 +110,7 @@ function computeTotalDistance(result) {
 }
 
 function getLocation() {
+
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
@@ -113,6 +119,15 @@ function getLocation() {
 }
 
 function showPosition(position) {
+    var geocoder = new google.maps.Geocoder();
+    var latLng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+    if(geocoder){
+        geocoder.geocode({'latLng' : latLng}, function(result,status){
+            if(status == google.maps.GeocoderStatus.OK){
+                console.log(results[0].formatted_adress)
+            }
+        })
+    }
     console.log( "Latitude: " + position.coords.latitude +
         "Longitude: " + position.coords.longitude);
 }

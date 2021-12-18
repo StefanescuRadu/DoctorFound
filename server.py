@@ -88,7 +88,10 @@ def main():
             # TODO: Sa verific daca merge
         except IndexError:
             return render_template('main.html', premium=premium, current_date=current_date, sorted_locations=sorted_locations)
-        print('-----------1-------------')
+    print('-----------1-------------')
+    print(str(sorted_locations[0]))
+    print('-----------1-------------')
+    sorted_locations[0]['temp_distance'] = str(round(sorted_locations[0]['temp_distance'],2))
     return render_template('main.html', premium=premium, current_date=current_date, sorted_locations=sorted_locations)
 
 
@@ -144,7 +147,12 @@ def buy_premium(email):
 
 @app.route("/room/<string:room_id>/")
 def enter_room(room_id):
-    sorted_locations=[{}]
+    search_string = "urgente medicale generale"
+    current_home_address = "Strada Semilunei 4-6, București 020797"
+    geocode_home_address = util.convert_address(gmaps.geocode(current_home_address)[0])
+    locations = places(gmaps, query=search_string, location=geocode_home_address['geometry'], radius=5000, language="ro",
+                   type="doctor")
+    sorted_locations = util.get_clean_closest_locations(locations, geocode_home_address)
     premium = '1999'
     if room_id not in session:
         return redirect(url_for("entry_checkpoint", room_id=room_id))
