@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e75997c-df36-47b9-a838-24d248ca83e1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f1317fa0-15af-4f71-8c30-046cf9351380.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f1317fa0-15af-4f71-8c30-046cf9351380.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f1317fa0-15af-4f71-8c30-046cf9351380/storage_v2/_src_/database/doctorfound.w-HaNQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f1317fa0-15af-4f71-8c30-046cf9351380/storage_v2/_src_/database/doctorfound.w-HaNQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datamanager.py" beforeDir="false" afterPath="$PROJECT_DIR$/datamanager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.py" beforeDir="false" afterPath="$PROJECT_DIR$/server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/chatroom_checkpoint.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/chatroom_checkpoint.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +132,7 @@
       <option name="presentableId" value="Default" />
       <updated>1639731683710</updated>
       <workItem from="1639731690664" duration="2650000" />
-      <workItem from="1639742628746" duration="37259000" />
+      <workItem from="1639742628746" duration="38834000" />
     </task>
     <servers />
   </component>
@@ -150,9 +150,20 @@
       </map>
     </option>
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/server.py</url>
+          <line>163</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DoctorFound$util.coverage" NAME="util Coverage Results" MODIFIED="1639776508608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DoctorFound$dragos_wip.coverage" NAME="dragos_wip Coverage Results" MODIFIED="1639794841913" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/DoctorFound$server.coverage" NAME="server Coverage Results" MODIFIED="1639794877963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/DoctorFound$server.coverage" NAME="server Coverage Results" MODIFIED="1639798165493" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

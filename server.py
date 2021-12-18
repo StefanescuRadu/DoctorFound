@@ -132,13 +132,13 @@ def buy_premium(email):
     return render_template('premium.html')
 
 
-@app.route("/join", methods=["GET", "POST"])
-def index():
-    if request.method == "POST":
-        room_id = request.form['room_id']
-        return redirect(url_for("entry_checkpoint", room_id=room_id))
-
-    return render_template("home.html")
+# @app.route("/join", methods=["GET", "POST"])
+# def index():
+#     if request.method == "POST":
+#         room_id = 'drFound'
+#         return redirect(url_for("entry_checkpoint", room_id=room_id))
+#
+#     return render_template("home.html")
 
 
 @app.route("/room/<string:room_id>/")
@@ -158,7 +158,7 @@ def enter_room(room_id):
 @app.route("/room/<string:room_id>/checkpoint/", methods=["GET", "POST"])
 def entry_checkpoint(room_id):
     if request.method == "POST":
-        display_name = request.form['display_name']
+        display_name = session['profile']['given_name']
         mute_audio = request.form['mute_audio']
         mute_video = request.form['mute_video']
         session[room_id] = {"name": display_name, "mute_audio": mute_audio, "mute_video": mute_video}
