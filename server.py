@@ -78,15 +78,14 @@ def main():
         print(premium)
         print(type(current_date))
         print('-----------0-------------')
-        print(sorted_locations[0])
         # TODO: Sa modific in loc de index 0, index de i, sau ce imi da
         try:
-            print(sorted_locations[0]['place_id'])
-            print('_-_-_-_-_-!!!_!_!_!_!_!_!')
-            datamanager.check_if_cabinet_exists(sorted_locations[0]['place_id'])
+            if not len(datamanager.check_if_cabinet_exists(sorted_locations[0]['place_id'])) > 0:
+                # print(datamanager.check_if_cabinet_exists(sorted_locations[0]['place_id']))'
+                datamanager.add_cabinet(sorted_locations[0])
+            # TODO: Sa verific daca merge
         except IndexError:
-            datamanager.add_cabinet(sorted_locations[0])
-        # TODO: Sa verific daca merge
+            return render_template('main.html', premium=premium, current_date=current_date, sorted_locations=sorted_locations)
         print('-----------1-------------')
     return render_template('main.html', premium=premium, current_date=current_date, sorted_locations=sorted_locations)
 

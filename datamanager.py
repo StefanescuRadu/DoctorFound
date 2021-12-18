@@ -61,21 +61,21 @@ def check_if_cabinet_exists(cursor, place_id):
     cursor.execute(query, place_id)
     return cursor.fetchall()
 
+
 @database_common.connection_handler
 def add_cabinet(cursor, location):
     query = """
         INSERT INTO cabinets(
-        formatted_address, palce_id, name, opening_hours, ratin, geometry, temp_distance)
-        VALUES (%(fortmatted_address, place_id)s, %(name)s, %(opening_hours)s, %(rating)s, %(geometry)s, %(temp_distance)s
+        formatted_address, place_id, name, rating, geometry, temp_distance)
+        VALUES (%(formatted_address)s, %(place_id)s, %(name)s, %(rating)s, %(geometry)s, %(temp_distance)s
         )
         """
     values = {
         'formatted_address': location['formatted_address'],
         'place_id': location['place_id'],
         'name': location['name'],
-        'opening_hours': location['opening_hours'],
         'rating': location['rating'],
         'geometry': location['geometry'],
         'temp_distance': location['temp_distance']
     }
-    query.execute(cursor, values)
+    cursor.execute(query, values)

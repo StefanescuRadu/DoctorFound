@@ -30,7 +30,7 @@ function startCamera()
     })
     .catch((e)=>{
         console.log("getUserMedia Error! ", e);
-        alert("Error! Unable to access camera or mic! ");
+        // alert("Error! Unable to access camera or mic! ");
     });
 }
 
