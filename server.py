@@ -1,5 +1,5 @@
 from google_api_folder.places import places
-from flask import Flask, render_template, redirect, url_for, session, flash, request
+from flask import Flask, render_template, redirect, url_for, session, flash, request, send_from_directory
 from authlib.integrations.flask_client import OAuth
 import os
 from datetime import timedelta
@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 from datetime import datetime
 from flask_socketio import SocketIO, emit, join_room, leave_room
 import googlemaps
+
 
 import datamanager
 import util
@@ -230,6 +231,11 @@ def on_data(data):
         print('{} message from {} to {}'.format(data["type"], sender_sid, target_sid))
     socketio.emit('data', data, room=target_sid)
 
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'),
+                               'favicon.ico', mimetype='favicon.ico')
 
 
 
