@@ -49,7 +49,6 @@ gmaps = googlemaps.Client(key=app.secret_key)
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
-    
     if request.method == 'POST':
         search_string = request.form.get('search-box',"urgente medicale generale")
         datamanager.add_search_history(session['profile']['email'], search_string)
@@ -244,6 +243,7 @@ def on_data(data):
 def favicon():
     return send_from_directory(os.path.join(app.root_path, 'static'),
                                'favicon.ico', mimetype='favicon.ico')
+
 
 
 
