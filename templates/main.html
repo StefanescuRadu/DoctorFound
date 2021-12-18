@@ -10,7 +10,7 @@
 
 {% if 'profile' in session %}
     {% if  not 'name' in session[room_id] %}
-        <h1><a href="{{ url_for('entry_checkpoint', room_id='drFound') }}">JOIN</a></h1>
+        <h1><a href="{{ url_for('enter_room', room_id='drFound') }}">JOIN</a></h1>
     {% endif %}
 
 
