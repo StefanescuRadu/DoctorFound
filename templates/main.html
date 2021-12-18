@@ -4,20 +4,26 @@
 
 {% block content %}
 
-{% if 'profile' in session %}
-<h1>Welcome {{ session['profile']['given_name'] }}</h1>
 
-<p2><a href="{{ url_for('logout') }}">Logout</a></p2>
+<div class="nav-bar">
+{% if 'profile' in session %}
+
+
+
+<p><a id="logout" href="{{ url_for('logout') }}">Logout</a></p>
     {% if current_date < premium %}
-        <p3>You are a premium user!</p3>
+        <p>You are a premium user!</p>
     {% else %}
         <p>You are not a premium user</p>
-        <p></p><a href="{{ url_for('buy_premium', email=session['profile']['email']) }}">Click here to buy a premium subscription!</a></p>
+        <p><a href="{{ url_for('buy_premium', email=session['profile']['email']) }}">Click here to buy a premium subscription!</a></p>
     {% endif %}
 {% else %}
 <h1>Welcome</h1>
 <p2><a href="{{ url_for('login') }}">Login</a></p2>
 {% endif %}
+
+
+
 
 {% if 'profile' in session %}
 {% if not session['profile']['email'] == 'dragos@dragos.com' %}
@@ -26,33 +32,33 @@
     <input type="text" id="search-box" name="search-box" placeholder="ex: dentist">
     <button type="submit">Search</button>
 </form>
-
-
-<div id="floating-panel">
-    <div>
-        <div id="coordinates">
-            <strong>Start: </strong>
-            <input id="start" type="text" name="start">
-            <strong>End: </strong>
-            <input id="end" type="text" name="end">
-        </div>
-
-    </div>
-    <div>
-        <strong>Mode of Travel: </strong>
-        <select id="mode" onchange="calcRoute()">
-            <option value="DRIVING">Driving</option>
-            <option value="WALKING">Walking</option>
-            <option value="BICYCLING">Bicycling</option>
-            <option value="TRANSIT">Transit</option>
-        </select>
-    </div>
-    <p>Total Distance: <span id="total"></span></p>
-    <div>
-        <p id="directionsPanel"></p>
-    </div>
-
 </div>
+
+<!--<div id="floating-panel">-->
+<!--    <div>-->
+<!--        <div id="coordinates">-->
+<!--            <strong>Start: </strong>-->
+<!--            <input id="start" type="text" name="start">-->
+<!--            <strong>End: </strong>-->
+<!--            <input id="end" type="text" name="end">-->
+<!--        </div>-->
+
+<!--    </div>-->
+<!--    <div>-->
+<!--        <strong>Mode of Travel: </strong>-->
+<!--        <select id="mode" onchange="calcRoute()">-->
+<!--            <option value="DRIVING">Driving</option>-->
+<!--            <option value="WALKING">Walking</option>-->
+<!--            <option value="BICYCLING">Bicycling</option>-->
+<!--            <option value="TRANSIT">Transit</option>-->
+<!--        </select>-->
+<!--    </div>-->
+<!--    <p>Total Distance: <span id="total"></span></p>-->
+<!--    <div>-->
+<!--        <p id="directionsPanel"></p>-->
+<!--    </div>-->
+
+<!--</div>-->
 
 
 <div id="map"></div>
@@ -63,6 +69,7 @@
 {% endif %}
 
 {% if 'profile' in session %}
+<div class="chat">
     <div class="container mb-4">
         <h1 class="display-4">Video Chat</h1>
         <div class="room-info">
@@ -73,7 +80,7 @@
         </div>
     </div>
 
-    <div class="container-fluid px-0 mx-0">
+    <div class="container-fluid px-0 mx-0 ">
         <div id="video_grid" class="video-grid"></div>
 
         <div id="control_box" class="row control-box shadow">
@@ -102,7 +109,7 @@
             </div>
         </div>
     </div>
-
+</div>
 {% endif %}
 
 
