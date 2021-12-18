@@ -51,6 +51,7 @@ def main():
     
     if request.method == 'POST':
         search_string = request.form.get('search-box',"urgente medicale generale")
+        datamanager.add_search_history(session['profile']['email'], search_string)
         current_home_address=request.form.get('current_location',"Strada Semilunei 4-6, București 020797")
     else:
         search_string = "urgente medicale generale"

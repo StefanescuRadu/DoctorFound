@@ -79,3 +79,14 @@ def add_cabinet(cursor, location):
         'temp_distance': location['temp_distance']
     }
     cursor.execute(query, values)
+
+
+@database_common.connection_handler
+def add_search_history(cursor, email, searched_text):
+    query = """
+        INSERT INTO user_search_history VALUES (
+        %(email)s, %(searched_text)s)
+        """
+    details = {'email': email,
+               'searched_text': searched_text}
+    cursor.execute(query, details)

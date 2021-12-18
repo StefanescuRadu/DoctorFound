@@ -3,7 +3,7 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.31">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>633</IntrospectionStateNumber>
+      <IntrospectionStateNumber>649</IntrospectionStateNumber>
       <ServerVersion>13.5</ServerVersion>
       <StartupTime>1639660068</StartupTime>
       <TimeZones>true ACDT
@@ -804,7 +804,7 @@ false Zulu
 13425||10|C|G
 13425||-9223372036854775808|U|G
 13425||10|U|G</Grants>
-      <IntrospectionStateNumber>634</IntrospectionStateNumber>
+      <IntrospectionStateNumber>650</IntrospectionStateNumber>
       <ObjectId>16498</ObjectId>
       <OwnerName>robert</OwnerName>
     </database>
@@ -4135,7 +4135,7 @@ false Zulu
     <schema id="255" parent="3" name="public">
       <Comment>standard public schema</Comment>
       <Current>1</Current>
-      <IntrospectionStateNumber>634</IntrospectionStateNumber>
+      <IntrospectionStateNumber>650</IntrospectionStateNumber>
       <ObjectId>2200</ObjectId>
       <StateNumber>286</StateNumber>
       <OwnerName>robert</OwnerName>
@@ -4146,50 +4146,56 @@ false Zulu
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>robert</OwnerName>
     </table>
-    <table id="257" parent="255" name="users">
-      <ObjectId>16499</ObjectId>
-      <StateNumber>602</StateNumber>
+    <table id="257" parent="255" name="user_search_history">
+      <ObjectId>16515</ObjectId>
+      <StateNumber>647</StateNumber>
       <AccessMethodId>2</AccessMethodId>
       <OwnerName>robert</OwnerName>
     </table>
-    <column id="258" parent="256" name="place_id">
+    <table id="258" parent="255" name="users">
+      <ObjectId>16499</ObjectId>
+      <StateNumber>647</StateNumber>
+      <AccessMethodId>2</AccessMethodId>
+      <OwnerName>robert</OwnerName>
+    </table>
+    <column id="259" parent="256" name="place_id">
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>621</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="259" parent="256" name="name">
+    <column id="260" parent="256" name="name">
       <DataType>text|0s</DataType>
       <Position>2</Position>
       <StateNumber>621</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="260" parent="256" name="formatted_address">
+    <column id="261" parent="256" name="formatted_address">
       <DataType>text|0s</DataType>
       <Position>3</Position>
       <StateNumber>621</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="261" parent="256" name="rating">
+    <column id="262" parent="256" name="rating">
       <DataType>text|0s</DataType>
       <Position>5</Position>
       <StateNumber>621</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="262" parent="256" name="geometry">
+    <column id="263" parent="256" name="geometry">
       <DataType>text|0s</DataType>
       <Position>6</Position>
       <StateNumber>621</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="263" parent="256" name="temp_distance">
+    <column id="264" parent="256" name="temp_distance">
       <DataType>text|0s</DataType>
       <Position>7</Position>
       <StateNumber>621</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <index id="264" parent="256" name="cabinets_pkey">
+    <index id="265" parent="256" name="cabinets_pkey">
       <ClassIds>3126</ClassIds>
       <ColNames>place_id</ColNames>
       <CollationIds>100</CollationIds>
@@ -4201,7 +4207,7 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="265" parent="256" name="cabinets_pkey">
+    <key id="266" parent="256" name="cabinets_pkey">
       <ColNames>place_id</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16514</ObjectId>
@@ -4209,20 +4215,46 @@ false Zulu
       <StateNumber>621</StateNumber>
       <UnderlyingIndexId>16513</UnderlyingIndexId>
     </key>
-    <column id="266" parent="257" name="email">
+    <column id="267" parent="257" name="user_email">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StateNumber>647</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <column id="268" parent="257" name="search_text">
+      <DataType>text|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StateNumber>647</StateNumber>
+      <TypeId>25</TypeId>
+    </column>
+    <foreign-key id="269" parent="257" name="user_search_history_user_email_fkey">
+      <ColNames>user_email</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <ObjectId>16521</ObjectId>
+      <RefColNames>email</RefColNames>
+      <RefColPositions>1</RefColPositions>
+      <RefKeyName>users_pkey</RefKeyName>
+      <StateNumber>647</StateNumber>
+      <RefTableId>16499</RefTableId>
+      <RefTableName>users</RefTableName>
+      <RefTableKind>table</RefTableKind>
+    </foreign-key>
+    <column id="270" parent="258" name="email">
       <DataType>text|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StateNumber>602</StateNumber>
       <TypeId>25</TypeId>
     </column>
-    <column id="267" parent="257" name="premium_expiration">
+    <column id="271" parent="258" name="premium_expiration">
       <DataType>date|0s</DataType>
       <Position>2</Position>
       <StateNumber>602</StateNumber>
       <TypeId>1082</TypeId>
     </column>
-    <index id="268" parent="257" name="users_pkey">
+    <index id="272" parent="258" name="users_pkey">
       <ClassIds>3126</ClassIds>
       <ColNames>email</ColNames>
       <CollationIds>100</CollationIds>
@@ -4234,7 +4266,7 @@ false Zulu
       <Unique>1</Unique>
       <AccessMethodId>403</AccessMethodId>
     </index>
-    <key id="269" parent="257" name="users_pkey">
+    <key id="273" parent="258" name="users_pkey">
       <ColNames>email</ColNames>
       <NameSurrogate>1</NameSurrogate>
       <ObjectId>16506</ObjectId>
