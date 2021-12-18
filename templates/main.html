@@ -43,8 +43,6 @@
 <span id="geometry" data-geometry={{sorted_locations[0]['formatted_address']}}></span>
 {% if 'profile' in session %}
 <div id="center">
-<button id="previous" type="button">Previous</button>
-<button id="next" type="button">Next</button>
 
     <table>
         <tr>
@@ -113,6 +111,9 @@
 
     </div>
     </div>
+  <div>
+        <p id="directionsPanel"></p>
+    </div>
 </div>
 <p>Total Distance: <span id="total"></span></p>
 {% endif %}
@@ -137,9 +138,7 @@
 <!--        </select>-->
 <!--    </div>-->
 <!--    <p>Total Distance: <span id="total"></span></p>-->
-<!--    <div>-->
-<!--        <p id="directionsPanel"></p>-->
-<!--    </div>-->
+
 
 <!--</div>-->
 

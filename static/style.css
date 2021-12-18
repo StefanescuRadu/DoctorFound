@@ -43,14 +43,17 @@ input{
 }
 
 #directionsPanel{
-    background-color: red;
+
     position: absolute;
-    top:20px;
+    bottom:50%;
     right: 10%;
     width: 400px;
     z-index:5;
 }
 
+td.adp-text,table.adp-placemark{
+    visibility: hidden;
+}
 .nav-bar{
     display: flex;
     flex-direction: row;
@@ -87,7 +90,7 @@ input{
 table{
     position: absolute;
     width: 25%;
-    height: 50%;
+    height: 30%;
     margin: 0px auto;
     top:0;
     right: 0;
@@ -156,7 +159,7 @@ table{
 #buttons{
 
     position: absolute;
-    bottom: 20px;
+    bottom: 90px;
     left: 45px;
     word-spacing: 30px;
     flex:1;
