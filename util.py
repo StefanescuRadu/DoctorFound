@@ -26,10 +26,8 @@ def calculate_distance(element1,element2):
     return distance.distance(element1_coordonates,element2_coordonates).km
 
 def get_clean_closest_locations(locations,base_location=None):
-    result = [convert_address(element) for element in locations['results']]
-    for element in result:
-        element['temp_distance']=calculate_distance(element,base_location)
-    result2=sorted(result, key = lambda i:i['temp_distance'])
-    return result2
-
-
+    temp_list = [convert_address(element) for element in locations['results']]
+    for location in temp_list:
+        location['temp_distance']=calculate_distance(location,base_location)
+    final_result=sorted(temp_list, key = lambda i:i['temp_distance'])
+    return final_result
