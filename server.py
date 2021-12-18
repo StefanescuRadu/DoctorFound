@@ -1,25 +1,23 @@
-from google_api_folder.places import places
-from flask import Flask, render_template, redirect, url_for, session, flash, request, send_from_directory
-from authlib.integrations.flask_client import OAuth
 import os
-from datetime import timedelta
 from dotenv import load_dotenv
-from datetime import datetime
+from flask import Flask, render_template, redirect, url_for, session, flash, request, send_from_directory
 from flask_socketio import SocketIO, emit, join_room, leave_room
+from authlib.integrations.flask_client import OAuth
+from google_api_folder.places import places
 import googlemaps
-
+from datetime import timedelta
 
 import datamanager
 import util
 
+from engineio.payload import Payload
+Payload.max_decode_packets = 200
 
 _users_in_room = {} # stores room wise user list
 _room_of_sid = {} # stores room joined by an used
 _name_of_sid = {} # stores display name of users
 
 
-from engineio.payload import Payload
-Payload.max_decode_packets = 200
 
 app = Flask(__name__)
 load_dotenv()
@@ -63,10 +61,6 @@ def main():
     
     premium = '1999'
     current_date = util.get_current_datetime()
-    print("current_date: 0000000")
-    print(current_date)
-    print(type(current_date))
-    print('-----------0-------------')
     if 'profile' in session:
         email = session['profile']['email']
         try:  # index error if email not found in the databse/ not registered
@@ -75,21 +69,11 @@ def main():
             datamanager.add_user(email)
 
         premium = datamanager.check_if_premium(email)[0]['premium_expiration']
-        print('premium: 00000')
-        print(premium)
-        print(type(current_date))
-        print('-----------0-------------')
-        # TODO: Sa modific in loc de index 0, index de i, sau ce imi da
         try:
             if not len(datamanager.check_if_cabinet_exists(sorted_locations[0]['place_id'])) > 0:
-                # print(datamanager.check_if_cabinet_exists(sorted_locations[0]['place_id']))'
                 datamanager.add_cabinet(sorted_locations[0])
-            # TODO: Sa verific daca merge
         except IndexError:
             return render_template('main.html', premium=premium, current_date=current_date, sorted_locations=sorted_locations)
-    print('-----------1-------------')
-    print(str(sorted_locations[0]))
-    print('-----------1-------------')
     sorted_locations[0]['temp_distance'] = str(round(sorted_locations[0]['temp_distance'],2))
     return render_template('main.html', premium=premium, current_date=current_date, sorted_locations=sorted_locations)
 
@@ -108,8 +92,6 @@ def authorize():
     resp = google.get('userinfo')  # userinfo contains stuff u specificed in the scrope
     user_info = resp.json()
     user = oauth.google.userinfo()  # uses openid endpoint to fetch user info
-    # Here you use the profile/user data that you got and query your database find/register the user
-    # and set ur own data in the session not the profile from google
     session['profile'] = user_info
     session.permanent = True  # make the session permanant so it keeps existing after broweser gets closed
     return redirect('/')
@@ -125,13 +107,9 @@ def logout():
 @app.route('/premium/<email>', methods=['GET', 'POST'])
 def buy_premium(email):
     email = email.replace('}', '')
-    # print(email)
     if request.method == 'POST':
         if request.form.get('voucher') == 'reducere':
             datamanager.give_premium(email)
-    # print('----------')
-    # print(str(session))
-    # print('----------')
     return render_template('premium.html')
 
 
@@ -187,8 +165,6 @@ def on_join_room(data):
     sid = request.sid
     room_id = data["room_id"]
     display_name = session[room_id]["name"]
-
-    # register sid to the room
     join_room(room_id)
     _room_of_sid[sid] = room_id
     _name_of_sid[sid] = display_name
@@ -233,7 +209,7 @@ def on_data(data):
     sender_sid = data['sender_id']
     target_sid = data['target_id']
     if sender_sid != request.sid:
-        print("[Not supposed to happen!] request.sid and sender_id don't match!!!")
+        print("[Not supposed to happen!] reques"t.sid and sender_id don't match!!!")
     if data["type"] != "new-ice-candidate":
         print('{} message from {} to {}'.format(data["type"], sender_sid, target_sid))
     socketio.emit('data', data, room=target_sid)
