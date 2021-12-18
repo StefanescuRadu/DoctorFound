@@ -144,15 +144,15 @@ def buy_premium(email):
 
 @app.route("/room/<string:room_id>/")
 def enter_room(room_id):
+    sorted_locations=[{}]
     premium = '1999'
     if room_id not in session:
         return redirect(url_for("entry_checkpoint", room_id=room_id))
     if 'profile' in session:
         email = session['profile']['email']
-
         premium = datamanager.check_if_premium(email)[0]['premium_expiration']
     current_date = util.get_current_datetime()
-    return render_template("main.html", room_id=room_id, display_name=session[room_id]["name"],
+    return render_template("main.html", room_id=room_id, display_name=session[room_id]["name"],sorted_locations=sorted_locations,
                            mute_audio=session[room_id]["mute_audio"], mute_video=session[room_id]["mute_video"], premium=premium, current_date=current_date)
 
 

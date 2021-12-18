@@ -41,6 +41,75 @@
     {% endif %}
 {% endif %}
 
+
+<div id="center">
+    <table>
+        <tr>
+            <th>Name</th>
+            <td>{{ sorted_locations[0]['name'] }}</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>{{ sorted_locations[0]['formatted_address'] }}</td>
+        </tr>
+        <tr>
+            <th>Rating</th>
+            <td>{{ sorted_locations[0]['rating'] }}</td>
+        </tr>
+        <tr>
+            <th>Distance</th>
+            <td>{{ sorted_locations[0]['temp_distance'] }} km</td>
+        </tr>
+    </table>
+
+<!--    <div class="chat">-->
+<!--        <div class="container mb-4">-->
+<!--        <h1 class="display-4">Video Chat</h1>-->
+<!--        <div class="room-info">-->
+<!--            <h3>Room: <span class="heading-mark">{{room_id}}</span></h3>-->
+<!--            <h5>You have joined as <span class="heading-mark">{{display_name}}</span></h5>-->
+<!--            <div>Ask your friends to join using the room id: <span class="heading-mark">{{room_id}}</span></div>-->
+<!--            <div id="room_link"></div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+{% if 'profile' in session %}
+    <div id="chat" class="container-fluid px-0 mx-0 ">
+
+        <div >
+            <div id="buttons">
+
+                <button id="bttn_mute" class="btn btn-lg btn-outline-secondary rounded-circle">
+                    <span id="mute_icon" class="material-icons pt-2">
+                        mic
+                    </span>
+                </button>
+                <button id="bttn_vid_mute"class="btn btn-lg btn-outline-secondary rounded-circle">
+                    <span id="vid_mute_icon" class="material-icons pt-2">
+                        videocam
+                    </span>
+                </button>
+                <button id="call_end" class="btn btn-lg btn-danger rounded-circle">
+                    <span class="material-icons pt-2" id="call_end_1">
+                        call_end
+                    </span>
+                </button>
+            </div>
+            <div id="div_local_vid" >
+                <div class="vid-wrapper">
+                    <video id="local_vid" autoplay muted></video>
+                </div>
+            </div>
+        </div>
+        <div  class="video-grid">
+            No one else connected yet!
+        </div>
+
+    </div>
+    </div>
+</div>
+{% endif %}
+
 <!--<div id="floating-panel">-->
 <!--    <div>-->
 <!--        <div id="coordinates">-->
@@ -69,49 +138,7 @@
 
 
 
-{% if 'profile' in session %}
-<div class="chat">
-    <div class="container mb-4">
-<!--        <h1 class="display-4">Video Chat</h1>-->
-        <div class="room-info">
-<!--            <h3>Room: <span class="heading-mark">{{room_id}}</span></h3>-->
-<!--            <h5>You have joined as <span class="heading-mark">{{display_name}}</span></h5>-->
-<!--            <div>Ask your friends to join using the room id: <span class="heading-mark">{{room_id}}</span></div>-->
-<!--            <div id="room_link"></div>-->
-        </div>
-    </div>
 
-    <div class="container-fluid px-0 mx-0 ">
-        <div id="video_grid" class="video-grid"></div>
-
-        <div id="control_box" class="row control-box shadow">
-            <div class="col-7 col-md-8 col-lg-9 d-flex justify-content-around align-items-center button-box">
-
-                <button id="bttn_mute" class="btn btn-lg btn-outline-secondary rounded-circle">
-                    <span id="mute_icon" class="material-icons pt-2">
-                        mic
-                    </span>
-                </button>
-                <button id="bttn_vid_mute"class="btn btn-lg btn-outline-secondary rounded-circle">
-                    <span id="vid_mute_icon" class="material-icons pt-2">
-                        videocam
-                    </span>
-                </button>
-                <button id="call_end" class="btn btn-lg btn-danger rounded-circle">
-                    <span class="material-icons pt-2">
-                        call_end
-                    </span>
-                </button>
-            </div>
-            <div id="div_local_vid" class="col-5 col-md-4 col-lg-3 video-item ml-auto">
-                <div class="vid-wrapper">
-                    <video id="local_vid" autoplay muted></video>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-{% endif %}
 
 <!--<script id="js_table" src="{{ url_for('static', filename='main.js') }}"></script>-->
 
