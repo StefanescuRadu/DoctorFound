@@ -210,7 +210,7 @@ def on_data(data):
     sender_sid = data['sender_id']
     target_sid = data['target_id']
     if sender_sid != request.sid:
-        print("[Not supposed to happen!] request.sid and sender_id don't match!!!")
+        print("[Not supposed to happen!] reques"t.sid and sender_id don't match!!!")
     if data["type"] != "new-ice-candidate":
         print('{} message from {} to {}'.format(data["type"], sender_sid, target_sid))
     socketio.emit('data', data, room=target_sid)
