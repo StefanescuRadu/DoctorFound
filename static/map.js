@@ -103,5 +103,21 @@ function computeTotalDistance(result) {
     total = total / 1000;
     document.getElementById("total").innerHTML = total + " km";
 }
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+    }
+}
+
+function showPosition(position) {
+    console.log( "Latitude: " + position.coords.latitude +
+        "Longitude: " + position.coords.longitude);
+}
+
+getLocation()
+
 initMap()
 // https://developers.google.com/maps/documentation/javascript/overview#maps_map_simple-css

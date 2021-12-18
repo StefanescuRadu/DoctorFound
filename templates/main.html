@@ -41,7 +41,7 @@
     {% endif %}
 {% endif %}
 
-
+{% if 'profile' in session %}
 <div id="center">
     <table>
         <tr>
@@ -61,6 +61,8 @@
             <td>{{ sorted_locations[0]['temp_distance'] }} km</td>
         </tr>
     </table>
+
+{% endif %}
 
 <!--    <div class="chat">-->
 <!--        <div class="container mb-4">-->
