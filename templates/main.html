@@ -28,7 +28,7 @@
 
 
 {% if 'profile' in session %}
-    {% if not session['profile']['email'] == 'dragos@dragos.com' %}
+    {% if not session['profile']['email'] == 'dragosbas@dragos.com' %}
     <form action="{{ url_for('main') }} " method="post">
     <label for="search-box" >Search you issue</label>
         <input type="text" id="search-box" name="search-box" placeholder="ex: dentist">
@@ -43,6 +43,9 @@
 <span id="geometry" data-geometry={{sorted_locations[0]['formatted_address']}}></span>
 {% if 'profile' in session %}
 <div id="center">
+<button id="previous" type="button">Previous</button>
+<button id="next" type="button">Next</button>
+
     <table>
         <tr>
             <th>Name</th>
@@ -78,8 +81,8 @@
 {% if 'profile' in session %}
     <div id="chat" class="container-fluid px-0 mx-0 ">
 
-        <div >
-            <div id="buttons">
+         <div >
+           <div id="buttons">
 
                 <button id="bttn_mute" class="btn btn-lg btn-outline-secondary rounded-circle">
                     <span id="mute_icon" class="material-icons pt-2">
@@ -103,8 +106,9 @@
                 </div>
             </div>
         </div>
+
         <div  class="video-grid">
-            No one else connected yet!
+            No Doctor Connected Yet
         </div>
 
     </div>
