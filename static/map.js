@@ -1,22 +1,22 @@
-let mode = document.getElementById("mode").value;
+// let mode = document.getElementById("mode").value;
 let directionsService = new google.maps.DirectionsService()
 let directionsRenderer = new google.maps.DirectionsRenderer();
-var end = document.getElementById('end').value;
-var start = document.getElementById('start').value;
-new google.maps.places.Autocomplete(
-    document.getElementById("start"),
-    {
-        fields: ["formatted_address", "geometry", "name"],
-        strictBounds: false,
-        types: ["establishment"],
-    });
-new google.maps.places.Autocomplete(
-    document.getElementById("end"),
-    {
-        fields: ["formatted_address", "geometry", "name"],
-        strictBounds: false,
-        types: ["address"],
-    });
+// var end = document.getElementById('end').value;
+// var start = document.getElementById('start').value;
+// new google.maps.places.Autocomplete(
+//     document.getElementById("start"),
+//     {
+//         fields: ["formatted_address", "geometry", "name"],
+//         strictBounds: false,
+//         types: ["establishment"],
+//     });
+// new google.maps.places.Autocomplete(
+//     document.getElementById("end"),
+//     {
+//         fields: ["formatted_address", "geometry", "name"],
+//         strictBounds: false,
+//         types: ["address"],
+//     });
 function initMap() {
 
 
@@ -47,10 +47,10 @@ function initMap() {
 
 
 }
-const modeForm = document.getElementById("mode").children;
-for(elem of modeForm){
-    console.log(elem.value);
-}
+// const modeForm = document.getElementById("mode").children;
+// for(elem of modeForm){
+//     console.log(elem.value);
+// }
 
 function displayRoute(origin, destination, service, display) {
     if(origin && destination){
@@ -70,24 +70,24 @@ function displayRoute(origin, destination, service, display) {
     }
 
 }
-function calcRoute() {
-
-
-    var start = document.getElementById('start').value;
-    var end = document.getElementById('end').value;
-    var request = {
-        origin:start,
-        destination:end,
-        travelMode: google.maps.TravelMode[mode],
-    };
-    directionsService.route(request, function(response, status) {
-        var routes = response.routes;
-        console.log(routes)
-        if (status == 'OK') {
-            directionsRenderer.setDirections(response);
-        }
-    });
-}
+// function calcRoute() {
+//
+//
+//     var start = document.getElementById('start').value;
+//     var end = document.getElementById('end').value;
+//     var request = {
+//         origin:start,
+//         destination:end,
+//         travelMode: google.maps.TravelMode[mode],
+//     };
+//     directionsService.route(request, function(response, status) {
+//         var routes = response.routes;
+//         console.log(routes)
+//         if (status == 'OK') {
+//             directionsRenderer.setDirections(response);
+//         }
+//     });
+// }
 function computeTotalDistance(result) {
     let total = 0;
     const myroute = result.routes[0];

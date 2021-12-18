@@ -1,0 +1,111 @@
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+    height: 50%;
+    width: 70%;
+    position: absolute;
+    left:0;
+    bottom:0;
+
+
+}
+
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#floating-panel{
+    position: absolute;
+    top: 20px;
+    left:25%;
+    z-index: 5;
+    border: 1px solid #999;
+    text-align: center;
+    line-height: 30px;
+    padding: 10px;
+
+    background-color:transparent;
+}
+
+
+
+input{
+    width: 500px;
+}
+#coordinates{
+    display: flex;
+    flex-direction: column;
+}
+
+#directionsPanel{
+    background-color: red;
+    position: absolute;
+    top:20px;
+    right: 10%;
+    width: 400px;
+    z-index:5;
+}
+
+.nav-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    align-items: center;
+    position: relative;
+    padding: 35px;
+    height: 25%;
+}
+
+.chat{
+    position:absolute;
+    width: 500px;
+    height: 175px;
+    top:50px;
+    margin-bottom: 80%;
+}
+
+#control_box{
+    position: absolute;
+    top: 150px;
+    width: 100px;
+}
+
+#local_vid{
+    position: relative;
+    width: 100px;
+}
+
+
+table{
+    position: absolute;
+    margin-left: 75%;
+    margin-top: 25%;
+
+    width: 25%;
+    height: 50%;
+
+
+}
+
+/*thead{*/
+/*    display: flex;*/
+/*    flex-direction: row;*/
+/*    background-color: #9C1A1C;*/
+
+/*}*/
+
+/*#logout{*/
+/*    margin: 250px;*/
+/*}*/
+
+/*.nav-bar p{*/
+/*    position: absolute;*/
+/*    right: 5%;*/
+/*    top: 60%;*/
+/*}*/
+

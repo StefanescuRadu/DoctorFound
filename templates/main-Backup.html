@@ -6,40 +6,35 @@
 
 
 <div class="nav-bar">
-
-
 {% if 'profile' in session %}
-    {% if  not 'name' in session[room_id] %}
-        <h1><a href="{{ url_for('entry_checkpoint', room_id='drFound') }}">JOIN</a></h1>
+{% if  not 'name' in session[room_id] %}
+<h1><a href="{{ url_for('entry_checkpoint', room_id='drFound') }}">JOIN</a></h1>
+{% endif %}
+
+
+<p><a id="logout" href="{{ url_for('logout') }}">Logout</a></p>
+    {% if current_date < premium %}
+        <p>You are a premium user!</p>
+    {% else %}
+        <p>You are not a premium user</p>
+        <p><a href="{{ url_for('buy_premium', email=session['profile']['email']) }}">Click here to buy a premium subscription!</a></p>
     {% endif %}
-
-
-    <p><a id="logout" href="{{ url_for('logout') }}">Logout</a></p>
-        {% if current_date < premium %}
-            <p>You are a premium user!</p>
-        {% else %}
-            <p>You are not a premium user</p>
-            <p><a href="{{ url_for('buy_premium', email=session['profile']['email']) }}">Click here to buy a premium subscription!</a></p>
-        {% endif %}
 {% else %}
-    <h1>Welcome</h1>
-    <p2><a href="{{ url_for('login') }}">Login</a></p2>
+<h1>Welcome</h1>
+<p2><a href="{{ url_for('login') }}">Login</a></p2>
 {% endif %}
+
+
 
 
 {% if 'profile' in session %}
-    {% if not session['profile']['email'] == 'dragos@dragos.com' %}
-    <form action="{{ url_for('main') }} " method="post">
-    <label for="search-box" >Search you issue</label>
-        <input type="text" id="search-box" name="search-box" placeholder="ex: dentist">
-        <button type="submit">Search</button>
-    </form>
+{% if not session['profile']['email'] == 'dragos@dragos.com' %}
+<form action="{{ url_for('main') }} " method="post">
+<label for="search-box" >Search you issue</label>
+    <input type="text" id="search-box" name="search-box" placeholder="ex: dentist">
+    <button type="submit">Search</button>
+</form>
 </div>
-
-<div id="map"></div>
-
-    {% endif %}
-{% endif %}
 
 <!--<div id="floating-panel">-->
 <!--    <div>-->
@@ -68,6 +63,12 @@
 <!--</div>-->
 
 
+<div id="map"></div>
+
+
+
+{% endif %}
+{% endif %}
 
 {% if 'profile' in session %}
 <div class="chat">

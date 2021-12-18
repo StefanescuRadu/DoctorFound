@@ -47,3 +47,46 @@ def give_premium(cursor, email):
     details = {'email': email,
                'future_date': util.get_future_datetime()}
     cursor.execute(query, details)
+
+
+@database_common.connection_handler
+def check_if_cabinet_exists(cursor, place_id):
+    query = """
+        SELECT place_id FROM cabinets
+        WHERE place_id = %(place_id)s
+        """
+    place_id = {
+        'place_id': place_id
+    }
+    cursor.execute(query, place_id)
+    return cursor.fetchall()
+
+
+@database_common.connection_handler
+def add_cabinet(cursor, location):
+    query = """
+        INSERT INTO cabinets(
+        formatted_address, place_id, name, rating, geometry, temp_distance)
+        VALUES (%(formatted_address)s, %(place_id)s, %(name)s, %(rating)s, %(geometry)s, %(temp_distance)s
+        )
+        """
+    values = {
+        'formatted_address': location['formatted_address'],
+        'place_id': location['place_id'],
+        'name': location['name'],
+        'rating': location['rating'],
+        'geometry': location['geometry'],
+        'temp_distance': location['temp_distance']
+    }
+    cursor.execute(query, values)
+
+
+@database_common.connection_handler
+def add_search_history(cursor, email, searched_text):
+    query = """
+        INSERT INTO user_search_history VALUES (
+        %(email)s, %(searched_text)s)
+        """
+    details = {'email': email,
+               'searched_text': searched_text}
+    cursor.execute(query, details)
