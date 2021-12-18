@@ -1,3 +1,4 @@
+from google_api_folder.places import places
 from flask import Flask, render_template, redirect, url_for, session, flash, request
 from authlib.integrations.flask_client import OAuth
 import os
@@ -5,6 +6,7 @@ from datetime import timedelta
 from dotenv import load_dotenv
 from datetime import datetime
 from flask_socketio import SocketIO, emit, join_room, leave_room
+import googlemaps
 
 import datamanager
 import util
@@ -40,12 +42,24 @@ google = oauth.register(
     userinfo_endpoint='https://openidconnect.googleapis.com/v1/userinfo',  # This is only needed if using openId to fetch user info
     client_kwargs={'scope': 'openid email profile'},
 )
+# Gmaps Setup
+gmaps = googlemaps.Client(key=app.secret_key)
 
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
+    
     if request.method == 'POST':
-        searched = request.form.get('search-box') #for dragos
+        search_string = request.form.get('search-box',"urgente medicale generale")
+        current_home_address=request.form.get('current_location',"Strada Semilunei 4-6, București 020797")
+    else:
+        search_string = "urgente medicale generale"
+        current_home_address="Strada Semilunei 4-6, București 020797"
+    
+    geocode_home_address = util.convert_address(gmaps.geocode(current_home_address)[0])
+    locations = places(gmaps,query=search_string,location=geocode_home_address['geometry'],radius=5000,language="ro",type="doctor")
+    sorted_locations = util.get_clean_closest_locations(locations,geocode_home_address)
+    
     premium = '1999'
     current_date = util.get_current_datetime()
     print("current_date: 0000000")
@@ -64,7 +78,9 @@ def main():
         print(premium)
         print(type(current_date))
         print('-----------0-------------')
-    return render_template('main.html', premium=premium, current_date=current_date)
+        print(sorted_locations[0])
+        print('-----------1-------------')
+    return render_template('main.html', premium=premium, current_date=current_date,sorted_locations=sorted_locations)
 
 
 @app.route('/login')
@@ -98,13 +114,13 @@ def logout():
 @app.route('/premium/<email>', methods=['GET', 'POST'])
 def buy_premium(email):
     email = email.replace('}', '')
-    print(email)
+    # print(email)
     if request.method == 'POST':
         if request.form.get('voucher') == 'reducere':
             datamanager.give_premium(email)
-    print('----------')
-    print(str(session))
-    print('----------')
+    # print('----------')
+    # print(str(session))
+    # print('----------')
     return render_template('premium.html')
 
 
@@ -202,10 +218,11 @@ def on_data(data):
     target_sid = data['target_id']
     if sender_sid != request.sid:
         print("[Not supposed to happen!] request.sid and sender_id don't match!!!")
-
     if data["type"] != "new-ice-candidate":
         print('{} message from {} to {}'.format(data["type"], sender_sid, target_sid))
     socketio.emit('data', data, room=target_sid)
+
+
 
 
 if __name__ == '__main__':
