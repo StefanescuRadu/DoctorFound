@@ -15,7 +15,7 @@ def convert_address(element:dict):
     result['formatted_address']=element.get('formatted_address',"") 
     result['place_id']=element.get('place_id',"")
     result['name']=element.get('name',"")
-    result['opening_hours']=element.get('opening_hours',"")
+    result['opening_hours']=str(element.get('opening_hours',""))
     result['rating']=element.get('rating',"")
     result['geometry']=str(element['geometry']['location']['lat'])+","+str(element['geometry']['location']['lng'])
     return result

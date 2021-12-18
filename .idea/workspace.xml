@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1e75997c-df36-47b9-a838-24d248ca83e1" name="Changes" comment="" />
+    <list default="true" id="1e75997c-df36-47b9-a838-24d248ca83e1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f1317fa0-15af-4f71-8c30-046cf9351380.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f1317fa0-15af-4f71-8c30-046cf9351380.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/f1317fa0-15af-4f71-8c30-046cf9351380/storage_v2/_src_/database/doctorfound.w-HaNQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/f1317fa0-15af-4f71-8c30-046cf9351380/storage_v2/_src_/database/doctorfound.w-HaNQ/schema/public.abK9xQ.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/main.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/main.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/util.py" beforeDir="false" afterPath="$PROJECT_DIR$/util.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,10 +41,13 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
     <property name="settings.editor.selected.configurable" value="Presentation Assistant" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/static" />
     </key>
@@ -126,7 +136,7 @@
       <option name="presentableId" value="Default" />
       <updated>1639731683710</updated>
       <workItem from="1639731690664" duration="2650000" />
-      <workItem from="1639742628746" duration="43393000" />
+      <workItem from="1639742628746" duration="45562000" />
     </task>
     <servers />
   </component>
