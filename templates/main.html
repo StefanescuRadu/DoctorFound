@@ -30,7 +30,7 @@
 {% if 'profile' in session %}
     {% if not session['profile']['email'] == 'dragosbas@dragos.com' %}
     <form action="{{ url_for('main') }} " method="post">
-    <label for="search-box" >Search you issue</label>
+    <label for="search-box" >Search your issue</label>
         <input type="text" id="search-box" name="search-box" placeholder="ex: dentist">
         <button type="submit">Search</button>
     </form>
